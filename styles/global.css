@@ -68,16 +68,17 @@ table {
 /* ESTILOS DE BASE Y PROPIEDADES CUSTOM GLOBALES*/
 :root {
   /* Paleta de colores (Fondo claro) Esquema 1*/
-  --clr-1-fondo: #f7f9fe;
+  --clr-1-principal: #f7f9fe;
+  --clr-1-contraste: #000;
   --clr-1-azul-marino: #304d7d;
   --clr-1-azul-acento: #3076eb;
   --clr-1-tablas-a: #e8e8e8;
   --clr-1-tablas-b: #f9f9f9;
-  --clr-1-negro: #000;
   /* Paleta de colores (Fondo oscuro) Esquema 2*/
-  --clr-2-fondo: #282828;
-  --clr-1-tablas-a: #454545;
-  --clr-1-tablas-b: #595959;
+  --clr-2-principal: #282828;
+  --clr-2-contraste: var(--clr-1-principal);
+  --clr-2-tablas-a: #454545;
+  --clr-2-tablas-b: #595959;
   /* Fuentes */
   --ff-main: 'Roboto', sans-serif;
   --fw-light: 100;
@@ -92,6 +93,6 @@ body {
   font-family: var(--ff-main);
   font-size: 1.6rem;
   font-weight: var(--fw-medium);
-  background-color: var(--clr-1-fondo);
-  color: var(--clr-1-negro);
+  background-color: var(--clr-1-principal);
+  color: var(--clr-1-contraste);
 }

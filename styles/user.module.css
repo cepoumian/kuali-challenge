@@ -1,0 +1,22 @@
+.user {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.initials {
+  width: 3.5rem;
+  height: 3.5rem;
+  line-height: 3.5rem;
+  border-radius: 5rem;
+  text-align: center;
+  background-color: var(--clr-1-azul-marino);
+}
+
+.details p {
+  margin-bottom: 1rem;
+}
+
+.details div {
+  font-size: 1.2rem;
+}
