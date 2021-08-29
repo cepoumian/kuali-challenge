@@ -1,20 +1,22 @@
+import { Fragment } from 'react';
 import Head from 'next/head';
 
-import Test from '@/components/Test';
+import Login from '@/components/Login';
+import styles from '@/styles/enter.module.css';
 
-export default function Home() {
+export default function Enter() {
   return (
-    <div>
+    <Fragment>
       <Head>
-        <title>Cesar Poumian</title>
-        <meta name="description" content="Sitio de Cesar Poumian para Kuali Challenge" />
-        <link rel="icon" href="/favicon.ico" />
+        <title>Login to Kuali Challenge</title>
+        <meta name="description" content="Login to Kuali Challenge" />
       </Head>
-      <main>
-        <div>
-          <Test />
+      <div className={styles.wrapper}>
+        <div className={styles.hello}>
+          <img src="/images/login-imagen.svg" alt="Ilustración de fondo" />
         </div>
-      </main>
-    </div>
+        <Login />
+      </div>
+    </Fragment>
   );
 }

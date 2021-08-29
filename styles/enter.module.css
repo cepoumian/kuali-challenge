@@ -1,0 +1,16 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  min-height: 100vh;
+}
+
+.hello {
+  align-self: center;
+  padding: 0 5rem;
+}
+
+.hello img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

@@ -1,0 +1,36 @@
+.form,
+.form fieldset {
+  display: flex;
+  flex-direction: column;
+}
+
+.form {
+  flex-basis: content;
+}
+
+.form fieldset {
+  align-items: flex-start;
+  align-self: stretch;
+}
+
+.form label {
+  font-weight: var(--fw-light);
+  margin-bottom: 0.25rem;
+}
+
+.form input {
+  margin-bottom: 2rem;
+  width: 21.5rem;
+  height: 2.4rem;
+  border-style: solid;
+  border-radius: 3px;
+  border-color: #dcdcdc;
+}
+
+.form button {
+  height: 3.4rem;
+  background-color: var(--clr-1-azul-acento);
+  color: var(--clr-1-fondo);
+  border: none;
+  cursor: pointer;
+}
