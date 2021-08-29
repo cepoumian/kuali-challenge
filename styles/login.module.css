@@ -1,0 +1,24 @@
+.login {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.login img {
+  margin-bottom: 5rem;
+}
+
+.login h3 {
+  font-size: 2.4rem;
+  font-weight: var(--fw-bold);
+  line-height: 2.8rem;
+}
+
+.login p {
+  margin: 3rem 0;
+  font-size: 1.8rem;
+  line-height: 2.1rem;
+}

@@ -92,6 +92,6 @@ body {
   font-family: var(--ff-main);
   font-size: 1.6rem;
   font-weight: var(--fw-medium);
-  background-color: var(--clr-1-azul-marino);
-  color: var(--clr-1-fondo);
+  background-color: var(--clr-1-fondo);
+  color: var(--clr-1-negro);
 }
