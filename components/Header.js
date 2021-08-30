@@ -1,9 +1,21 @@
+import { useContext } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 
+import AuthContext from 'store/auth-context';
 import styles from '@/styles/header.module.css';
 import User from './User';
 
 export default function Header() {
+  const authContext = useContext(AuthContext);
+  const router = useRouter();
+  const isLoggedIn = authContext.isLoggedIn;
+
+  const logoutHandler = () => {
+    authContext.logout();
+    router.push('/');
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
@@ -13,7 +25,19 @@ export default function Header() {
           </a>
         </Link>
       </div>
-      <User />
+      {isLoggedIn && (
+        <div className={styles.wrapper}>
+          <button onClick={logoutHandler} className={styles.logout}>
+            Salir de la aplicación
+          </button>
+          <User />
+        </div>
+      )}
+      {!isLoggedIn && (
+        <Link href="/">
+          <a className={styles.login}>Ingresa o Registrate</a>
+        </Link>
+      )}
     </header>
   );
 }

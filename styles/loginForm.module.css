@@ -27,10 +27,20 @@
   border-color: #dcdcdc;
 }
 
-.form button {
+.form__button--auth {
   height: 3.4rem;
+  margin-bottom: 2rem;
   font-size: 1.6rem;
   background-color: var(--clr-1-azul-acento);
+  color: var(--clr-1-principal);
+  border: none;
+  cursor: pointer;
+}
+
+.form__button--switch {
+  height: 3.4rem;
+  font-size: 1.6rem;
+  background-color: var(--clr-1-azul-marino);
   color: var(--clr-1-principal);
   border: none;
   cursor: pointer;
