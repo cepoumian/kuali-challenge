@@ -29,8 +29,9 @@
 
 .form button {
   height: 3.4rem;
+  font-size: 1.6rem;
   background-color: var(--clr-1-azul-acento);
-  color: var(--clr-1-fondo);
+  color: var(--clr-1-principal);
   border: none;
   cursor: pointer;
 }
