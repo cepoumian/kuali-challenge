@@ -8,15 +8,10 @@ import DisplayError from '@/components/DisplayError';
 import useHttp from '@/hooks/use-http';
 import { getUsers, getUsersByUsername } from '@/lib/api';
 
-export default function MainPage({ initialUsers, error }) {
+export default function MainPage({ initialUsers, initialError }) {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
-  const {
-    sendRequest,
-    status,
-    data,
-    error: requestError,
-  } = useHttp(getUsersByUsername, true);
+  const { sendRequest, status, data, error } = useHttp(getUsersByUsername, true);
 
   useEffect(() => {
     setLoading(true);
@@ -43,8 +38,13 @@ export default function MainPage({ initialUsers, error }) {
   return (
     <Page title="Pagina Principal">
       <Header />
-      {requestError && <p>{requestError}</p>}
-      <Main initialUsers={users} loading={loading} searchUsers={searchUsers} />
+      <Main
+        initialUsers={users}
+        loading={loading}
+        searchUsers={searchUsers}
+        initialError={initialError}
+        error={error}
+      />
     </Page>
   );
 }
@@ -61,6 +61,6 @@ export async function getServerSideProps() {
   }
 
   return {
-    props: { initialUsers: users, error },
+    props: { initialUsers: users, initialError: error },
   };
 }

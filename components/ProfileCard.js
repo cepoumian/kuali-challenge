@@ -9,7 +9,7 @@ export default function ProfileCard({ user }) {
       <p>Usuario:</p>
       <h3>{login}</h3>
       <img src={avatar_url} alt="Profile avatar" className={styles.avatar} />
-      <Link href={`/user/${login}`}>
+      <Link href={`/profile/${login}`}>
         <a className={styles.button}>Más Info</a>
       </Link>
     </div>
