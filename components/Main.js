@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 import useHttp from '@/hooks/use-http';
 import usePage from '@/hooks/use-pagination';
@@ -7,16 +7,26 @@ import styles from '@/styles/main.module.css';
 import { getUsers } from '@/lib/api';
 const per_page = parseInt(process.env.NEXT_PUBLIC_PER_PAGE);
 
-export default function Main({ initialUsers, loading, searchUsers }) {
+export default function Main({ initialUsers, searchUsers, error, initialError }) {
   const [users, setUsers] = useState([]);
+  const [input, setInput] = useState('');
+  const [inputError, setInputError] = useState('');
+  const [searchError, setSearchError] = useState('');
   const { sendRequest, status, data, error: requestError } = useHttp(getUsers);
   const [next, setNext] = useState(0);
   const { getPage, page } = usePage(per_page);
-  const searchInputRef = useRef();
 
   useEffect(() => {
     setUsers(initialUsers);
   }, [initialUsers, setUsers]);
+
+  useEffect(() => {
+    setSearchError(error);
+    const timeout = setTimeout(() => {
+      setSearchError(null);
+    }, 2000);
+    return () => clearTimeout(timeout);
+  }, [error]);
 
   useEffect(() => {
     sendRequest(next);
@@ -45,7 +55,18 @@ export default function Main({ initialUsers, loading, searchUsers }) {
   };
 
   const searchUsersHandler = () => {
-    searchUsers(searchInputRef.current.value);
+    if (input.length > 0) {
+      searchUsers(input);
+    } else {
+      setInputError('Debe introducir un nombre de usuario');
+      setTimeout(() => {
+        setInputError(null);
+      }, 2000);
+    }
+  };
+
+  const inputHandler = (e) => {
+    setInput(e.target.value);
   };
 
   return (
@@ -54,7 +75,9 @@ export default function Main({ initialUsers, loading, searchUsers }) {
         <div className={styles.header}>
           <h2>Perfiles de Github</h2>
           <div className={styles.search}>
-            <input type="text" name="search" ref={searchInputRef} />
+            {inputError && <p>{inputError}</p>}
+            {searchError && <p>El usuario no existe</p>}
+            <input type="text" name="search" value={input} onChange={inputHandler} />
             <button onClick={searchUsersHandler}>Buscar usuario</button>
           </div>
         </div>
@@ -62,12 +85,14 @@ export default function Main({ initialUsers, loading, searchUsers }) {
           <button type="button" onClick={prevUsersHandler} disabled={page === 1}>
             Previos
           </button>
-          {loading || (status === 'pending' ? <p>Cargando....</p> : <p>Página {page}</p>)}
+          {status === 'pending' ? <p>Cargando....</p> : <p>Página {page}</p>}
           <button type="button" onClick={nextUsersHandler} disabled={page === 4}>
             Siguientes
           </button>
         </div>
-        {requestError && <p>Se ha producido un errror: {requestError}</p>}
+        {(initialError || requestError) && (
+          <p>Se ha producido un errror: {initialError}</p>
+        )}
         <div className={styles.profiles}>
           {users?.map((user) => (
             <ProfileCard key={user.id} user={user} />
