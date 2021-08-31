@@ -1,0 +1,43 @@
+.wrapper {
+  padding: 8rem 6rem 4rem;
+  display: flex;
+}
+
+.main {
+  margin: 4rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  max-width: 1256px;
+}
+
+.main h2 {
+  font-size: 3.2rem;
+  color: var(--clr-1-azul-acento);
+  margin-bottom: 1.3rem;
+}
+
+.main h3 {
+  font-size: 2.4rem;
+  color: var(--clr-1-azul-marino);
+  margin-bottom: 1.4rem;
+}
+
+.main p {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.main img {
+  margin-bottom: 2rem;
+  width: 30rem;
+  object-fit: contain;
+}
+
+.main a {
+  display: block;
+  color: var(--clr-1-azul-acento);
+  text-decoration: none;
+  margin-bottom: 1.8rem;
+}

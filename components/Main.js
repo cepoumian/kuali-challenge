@@ -7,7 +7,7 @@ import styles from '@/styles/main.module.css';
 import { getUsers } from '@/lib/api';
 const per_page = parseInt(process.env.NEXT_PUBLIC_PER_PAGE);
 
-export default function Main({ initialUsers, searchUsers, error, initialError }) {
+export default function Main({ initialUsers, searchUser, error, initialError }) {
   const [users, setUsers] = useState([]);
   const [input, setInput] = useState('');
   const [inputError, setInputError] = useState('');
@@ -54,9 +54,9 @@ export default function Main({ initialUsers, searchUsers, error, initialError })
     }
   };
 
-  const searchUsersHandler = () => {
+  const searchUserHandler = () => {
     if (input.length > 0) {
-      searchUsers(input);
+      searchUser(input);
     } else {
       setInputError('Debe introducir un nombre de usuario');
       setTimeout(() => {
@@ -78,7 +78,7 @@ export default function Main({ initialUsers, searchUsers, error, initialError })
             {inputError && <p>{inputError}</p>}
             {searchError && <p>El usuario no existe</p>}
             <input type="text" name="search" value={input} onChange={inputHandler} />
-            <button onClick={searchUsersHandler}>Buscar usuario</button>
+            <button onClick={searchUserHandler}>Buscar usuario</button>
           </div>
         </div>
         <div className={styles.pages}>
