@@ -6,12 +6,12 @@ import Main from '@/components/Main';
 import DisplayError from '@/components/DisplayError';
 
 import useHttp from '@/hooks/use-http';
-import { getUsers, getUsersByUsername } from '@/lib/api';
+import { getUsers, getUserByUsername } from '@/lib/api';
 
 export default function MainPage({ initialUsers, initialError }) {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
-  const { sendRequest, status, data, error } = useHttp(getUsersByUsername, true);
+  const { sendRequest, status, data, error } = useHttp(getUserByUsername, true);
 
   useEffect(() => {
     setLoading(true);
@@ -22,14 +22,14 @@ export default function MainPage({ initialUsers, initialError }) {
     }
 
     if (data && status === 'completed') {
-      const searchedUsers = [];
-      searchedUsers.push(data);
-      setUsers(searchedUsers);
+      const searchedUser = [];
+      searchedUser.push(data);
+      setUsers(searchedUser);
       setLoading(false);
     }
   }, [status, data, setUsers, initialUsers]);
 
-  const searchUsers = (username) => {
+  const searchUser = (username) => {
     if (username.length !== 0) {
       sendRequest(username);
     }
@@ -41,7 +41,7 @@ export default function MainPage({ initialUsers, initialError }) {
       <Main
         initialUsers={users}
         loading={loading}
-        searchUsers={searchUsers}
+        searchUser={searchUser}
         initialError={initialError}
         error={error}
       />
