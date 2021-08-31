@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 
 import Page from '@/components/Page';
 import Header from '@/components/Header';
 import Main from '@/components/Main';
-import DisplayError from '@/components/DisplayError';
-
+import ThemeContext from 'store/theme-context';
 import useHttp from '@/hooks/use-http';
 import { getUsers, getUserByUsername } from '@/lib/api';
 
 export default function MainPage({ initialUsers, initialError }) {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
+  const { theme, toggleTheme } = useContext(ThemeContext);
   const { sendRequest, status, data, error } = useHttp(getUserByUsername, true);
 
   useEffect(() => {
@@ -36,14 +36,15 @@ export default function MainPage({ initialUsers, initialError }) {
   };
 
   return (
-    <Page title="Pagina Principal">
-      <Header />
+    <Page title="Pagina Principal" theme={theme}>
+      <Header toggleTheme={toggleTheme} />
       <Main
         initialUsers={users}
         loading={loading}
         searchUser={searchUser}
         initialError={initialError}
         error={error}
+        theme={theme}
       />
     </Page>
   );

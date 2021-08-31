@@ -1,25 +1,31 @@
+import { useContext } from 'react';
 import Header from '@/components/Header';
 import Page from '@/components/Page';
 import Profile from '@/components/Profile';
+import ThemeContext from 'store/theme-context';
 import { getUserByUsername } from '@/lib/api';
 import Link from 'next/link';
 
 export default function ProfilePage({ user, error }) {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
   return (
-    <Page title="Pagina Principal">
-      <Header />
-      <Profile user={user} error={error} />
+    <Page title={`Perfil de ${user.login}`} theme={theme}>
+      <Header toggleTheme={toggleTheme} />
       <Link href="/main">
         <a
           style={{
+            marginTop: '3rem',
             marginLeft: '6rem',
+            display: 'inline-block',
             textDecoration: 'none',
-            color: 'var(--clr-1-azul-acento)',
+            color: theme ? 'var(--clr-1-principal)' : 'var(--clr-1-azul-acento)',
           }}
         >
           Volver a la página principal
         </a>
       </Link>
+      <Profile user={user} error={error} theme={theme} />
     </Page>
   );
 }

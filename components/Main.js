@@ -7,7 +7,7 @@ import styles from '@/styles/main.module.css';
 import { getUsers } from '@/lib/api';
 const per_page = parseInt(process.env.NEXT_PUBLIC_PER_PAGE);
 
-export default function Main({ initialUsers, searchUser, error, initialError }) {
+export default function Main({ initialUsers, searchUser, error, initialError, theme }) {
   const [users, setUsers] = useState([]);
   const [input, setInput] = useState('');
   const [inputError, setInputError] = useState('');
@@ -70,7 +70,7 @@ export default function Main({ initialUsers, searchUser, error, initialError }) 
   };
 
   return (
-    <div className={styles.wrapper}>
+    <div className={theme ? styles.wrapperDark : styles.wrapper}>
       <main className={styles.main}>
         <div className={styles.header}>
           <h2>Perfiles de Github</h2>
