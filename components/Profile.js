@@ -16,9 +16,9 @@ export default function Profile({ user }) {
 
   return (
     <div className={styles.wrapper}>
-      <main className={styles.main}>
+      <div className={styles.card}>
         <img src={avatar_url} alt="Profile avatar" />
-        <div>
+        <div className={styles.info}>
           <h2>{login}</h2>
           <h3>Nombre Real: {name ? name : 'Información no proporcionada'}</h3>
           <p>Reside en: {location ? location : 'Información no proporcionada'}</p>
@@ -28,7 +28,7 @@ export default function Profile({ user }) {
           {blog && <a href={blog}>Blog de {login}</a>}
           {public_repos && <a href={public_repos}>Repositorios de Github de {login}</a>}
         </div>
-      </main>
+      </div>
     </div>
   );
 }

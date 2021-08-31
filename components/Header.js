@@ -6,7 +6,7 @@ import AuthContext from 'store/auth-context';
 import styles from '@/styles/header.module.css';
 import User from './User';
 
-export default function Header() {
+export default function Header({ toggleTheme }) {
   const authContext = useContext(AuthContext);
   const router = useRouter();
   const isLoggedIn = authContext.isLoggedIn;
@@ -15,6 +15,8 @@ export default function Header() {
     authContext.logout();
     router.push('/');
   };
+
+  /* const toggleThemeTrigger = () => toggleTheme(); */
 
   return (
     <header className={styles.header}>
@@ -29,6 +31,9 @@ export default function Header() {
         <div className={styles.wrapper}>
           <button onClick={logoutHandler} className={styles.logout}>
             Salir de la aplicación
+          </button>
+          <button onClick={toggleTheme} className={styles.logout}>
+            Cambiar de tema
           </button>
           <User />
         </div>

@@ -1,4 +1,16 @@
 .wrapper {
+  --btn-bg: var(--clr-1-azul-marino);
+  --btn-bg-hvr: var(--clr-1-azul-acento);
+  --btn-clr: var(--clr-1-principal);
+  --text-clr: var(--clr-1-contraste);
+  padding: 8rem 6rem 4rem;
+}
+
+.wrapperDark {
+  --btn-bg: var(--clr-1-azul-acento);
+  --btn-bg-hvr: var(--clr-1-azul-marino);
+  --btn-clr: var(--clr-1-principal);
+  --text-clr: var(--clr-1-principal);
   padding: 8rem 6rem 4rem;
 }
 
@@ -18,6 +30,7 @@
 
 .header h2 {
   font-size: 2.4rem;
+  color: var(--text-clr);
 }
 
 .search {
@@ -42,8 +55,8 @@
   padding: 0.5rem 1rem;
   font-size: 1.2rem;
   text-align: center;
-  background-color: var(--clr-1-azul-marino);
-  color: var(--clr-1-principal);
+  background-color: var(--btn-bg);
+  color: var(--btn-clr);
   border: none;
   cursor: pointer;
   text-decoration: none;
@@ -51,7 +64,7 @@
 
 .search button:hover,
 .search button:focus {
-  background-color: var(--clr-1-azul-acento);
+  background-color: var(--btn-bg-hvr);
 }
 
 .pages {
@@ -63,8 +76,8 @@
   padding: 1rem 2rem;
   font-size: 1.6rem;
   text-align: center;
-  background-color: var(--clr-1-azul-marino);
-  color: var(--clr-1-principal);
+  background-color: var(--btn-bg);
+  color: var(--btn-clr);
   border: none;
   cursor: pointer;
   text-decoration: none;
@@ -72,7 +85,7 @@
 
 .pages button:hover,
 .pages button:focus {
-  background-color: var(--clr-1-azul-acento);
+  background-color: var(--btn-bg-hvr);
 }
 
 .pages button:disabled {
@@ -83,7 +96,7 @@
 
 .pages p {
   font-size: 1.8rem;
-  color: var(--clr-1-azul-marino);
+  color: var(--text-clr);
 }
 
 .profiles {
