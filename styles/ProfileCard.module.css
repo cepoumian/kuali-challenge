@@ -1,0 +1,35 @@
+.card {
+  padding: 2rem 4rem;
+  border: #ccc 1px dotted;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 150px;
+}
+
+.card h3 {
+  font-size: 2.4rem;
+  margin-bottom: 2rem;
+}
+
+.avatar {
+  width: 10rem;
+  border-radius: 15%;
+  margin-bottom: 2rem;
+}
+
+.button {
+  padding: 1rem 2rem;
+  font-size: 1.6rem;
+  text-align: center;
+  background-color: var(--clr-1-azul-marino);
+  color: var(--clr-1-principal);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.button:hover,
+.button:focus {
+  background-color: var(--clr-1-azul-acento);
+}

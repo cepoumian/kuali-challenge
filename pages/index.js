@@ -6,7 +6,7 @@ import styles from '@/styles/enter.module.css';
 
 export default function EnterPage() {
   return (
-    <div>
+    <Fragment>
       <Head>
         <title>Ingresa al Kuali Challenge</title>
         <meta name="description" content="Ingresa a Kuali Challenge" />
@@ -17,6 +17,6 @@ export default function EnterPage() {
         </figure>
         <Login />
       </div>
-    </div>
+    </Fragment>
   );
 }
