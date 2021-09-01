@@ -17,6 +17,10 @@
   margin-bottom: 1rem;
 }
 
-.details div {
+.details button {
+  font-family: var(--ff-main);
   font-size: 1.2rem;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
 }
