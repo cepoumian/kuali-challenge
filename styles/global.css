@@ -96,3 +96,9 @@ body {
   background-color: var(--clr-1-principal);
   color: var(--clr-1-contraste);
 }
+
+@media screen and (max-width: 414px) {
+  :root {
+    font-size: 50%;
+  }
+}

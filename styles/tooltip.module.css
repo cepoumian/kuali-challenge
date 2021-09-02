@@ -6,7 +6,7 @@
   bottom: -150%;
   right: 25px;
   max-width: 300px;
-  padding: 1rem 2rem 0;
+  padding: 1rem 2rem 1rem;
   border-radius: 15px;
   background-color: var(--clr-1-tablas-a);
 }
