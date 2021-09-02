@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import Head from 'next/head';
 
-import styles from '@/styles/page.module.css';
+import styles from '../styles/page.module.css';
 
 export default function Page({ title, theme, hideTooltip, children }) {
   return (

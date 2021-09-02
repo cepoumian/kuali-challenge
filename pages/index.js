@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import Head from 'next/head';
 
 import Login from '@/components/Login';
-import styles from '@/styles/enter.module.css';
+import styles from '../styles/enter.module.css';
 
 export default function EnterPage() {
   return (

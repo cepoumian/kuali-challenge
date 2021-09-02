@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import styles from '@/styles/user.module.css';
+import styles from '../styles/user.module.css';
 
 export default function User({ showTooltip, userData }) {
   const [email, setEmail] = useState('test@example.com');
