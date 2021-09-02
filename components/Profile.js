@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styles from '@/styles/profile.module.css';
 
 export default function Profile({ user }) {
@@ -17,7 +18,7 @@ export default function Profile({ user }) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.card}>
-        <img src={avatar_url} alt="Profile avatar" />
+        <Image src={avatar_url} alt="Profile avatar" width={300} height={300} />
         <div className={styles.info}>
           <h2>{login}</h2>
           <h3>Nombre Real: {name ? name : 'Información no proporcionada'}</h3>
