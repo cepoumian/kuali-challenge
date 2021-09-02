@@ -1,18 +1,32 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-import AuthContext from 'store/auth-context';
 import styles from '@/styles/header.module.css';
+import { getAppUserData } from '@/lib/api';
+import AuthContext from 'store/auth-context';
+import useHttp from '@/hooks/use-http';
 import User from './User';
 import Tooltip from './Tooltip';
 
-export default function Header({ toggleTheme /* , showTooltip, showTooltipHandler */ }) {
+export default function Header({ toggleTheme }) {
   const authContext = useContext(AuthContext);
   const router = useRouter();
-  const isLoggedIn = authContext.isLoggedIn;
+  const { isLoggedIn, token } = authContext;
   const [showTooltip, setShowTooltip] = useState(false);
   const [toggle, setToggle] = useState(false);
+  const [userData, setUserData] = useState(null);
+  const { sendRequest, status, data, error } = useHttp(getAppUserData, true);
+
+  useEffect(() => {
+    sendRequest(token);
+  }, [sendRequest, token]);
+
+  useEffect(() => {
+    if (data && status === 'completed') {
+      setUserData(data);
+    }
+  }, [status, data, error, setUserData]);
 
   const logoutHandler = () => {
     authContext.logout();
@@ -36,16 +50,23 @@ export default function Header({ toggleTheme /* , showTooltip, showTooltipHandle
 
   return (
     <header className={styles.header}>
-      <div className={styles.logo}>
+      <div className={styles.fullLogo}>
         <Link href="/main">
           <a>
             <img src="/images/logo-blanco.svg" alt="Kuali logo" />
           </a>
         </Link>
       </div>
+      <div className={styles.smallLogo}>
+        <Link href="/main">
+          <a>
+            <img src="/images/logoSmall.svg" alt="Kuali logo" />
+          </a>
+        </Link>
+      </div>
       {isLoggedIn && (
         <div className={styles.wrapper}>
-          <User showTooltip={showTooltipHandler} />
+          <User showTooltip={showTooltipHandler} userData={userData} />
         </div>
       )}
       {!isLoggedIn && (

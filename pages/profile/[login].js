@@ -16,7 +16,7 @@ export default function ProfilePage({ user, error }) {
         <a
           style={{
             marginTop: '3rem',
-            marginLeft: '6rem',
+            marginLeft: '3rem',
             display: 'inline-block',
             textDecoration: 'none',
             color: theme ? 'var(--clr-1-principal)' : 'var(--clr-1-azul-acento)',
