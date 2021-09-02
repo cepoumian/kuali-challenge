@@ -4,7 +4,6 @@ import Image from 'next/image';
 
 export default function ProfileCard({ user }) {
   const { login, avatar_url, type } = user;
-  console.log(avatar_url);
   return (
     <div className={styles.card}>
       <p>Usuario:</p>
