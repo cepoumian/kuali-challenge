@@ -1,10 +1,10 @@
 import { useContext } from 'react';
+import Link from 'next/link';
 import Header from '@/components/Header';
 import Page from '@/components/Page';
 import Profile from '@/components/Profile';
 import ThemeContext from 'store/theme-context';
 import { getUserByUsername } from '@/lib/api';
-import Link from 'next/link';
 
 export default function ProfilePage({ user, error }) {
   const { theme, toggleTheme } = useContext(ThemeContext);
