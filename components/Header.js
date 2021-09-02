@@ -2,12 +2,12 @@ import { useContext, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-import styles from '@/styles/header.module.css';
 import { getAppUserData } from '@/lib/api';
 import AuthContext from 'store/auth-context';
 import useHttp from '@/hooks/use-http';
 import User from './User';
 import Tooltip from './Tooltip';
+import styles from '@/styles/header.module.css';
 
 export default function Header({ toggleTheme }) {
   const authContext = useContext(AuthContext);
