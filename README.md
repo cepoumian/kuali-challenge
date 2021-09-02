@@ -26,12 +26,12 @@ Cesar Poumian
 - El status de ingresado del usuario persiste aún si este refresca el navegador.
 - El usuario puede cerrar su sesión y salir de la aplicación abriendo el _tooltip_ por medio del botón "Mi Perfil".
 
-###Renderización en el lado del servidor (SSR)
+### Renderización en el lado del servidor (SSR)
 
 - La aplicación cuenta con tres rutas principales: "/", donde el usuario ingresa o se registra; "/main", donde se muestran algunas opciones de perfiles de usuarios de Github; y "/profile/:profileId" donde se muestran los detalles de el perfil seleccionado.
 - Las páginas se renderizan en el lado del servidor.
 
-###Paginación
+### Paginación
 
 - En la sección donde se muestran varios perfiles random de Github,se puede avanzar y retroceder de página con los botones "Anterior" y "Siguiente".
 
@@ -42,3 +42,7 @@ Cesar Poumian
 ### Opciones de tema claro y oscuro
 
 - El usuario puede selecccionar entre temas claro y oscuro abriendo el _tooltip_ por medio del botón "Mi Perfil".
+
+### Sigue la guía de estilos de JavaScript de AirBnb por medio de lintern
+
+### La aplicación esta montada en Vercel
