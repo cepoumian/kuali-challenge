@@ -12,6 +12,7 @@ export default function MainPage({ initialUsers, initialError }) {
   const [loading, setLoading] = useState(false);
   const { theme, toggleTheme } = useContext(ThemeContext);
   const { sendRequest, status, data, error } = useHttp(getUserByUsername, true);
+  /* const [showTooltip, setShowTooltip] = useState(false); */
 
   useEffect(() => {
     setLoading(true);
@@ -35,9 +36,18 @@ export default function MainPage({ initialUsers, initialError }) {
     }
   };
 
+  /* const showTooltipHandler = () => {
+    setShowTooltip((prevState) => !prevState);
+  }; */
+
   return (
     <Page title="Pagina Principal" theme={theme}>
-      <Header toggleTheme={toggleTheme} />
+      <Header
+        toggleTheme={toggleTheme}
+        /* hideTooltip={hideTooltipHandler} */
+        /* showTooltip={showTooltip}
+        showTooltipHandler={showTooltipHandler} */
+      />
       <Main
         initialUsers={users}
         loading={loading}
