@@ -106,9 +106,16 @@
 
 .profiles {
   display: grid;
-  gap: 3rem;
+  column-gap: 6rem;
+  row-gap: 3rem;
   justify-content: space-between;
   grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+}
+
+@media screen and (max-width: 1280px) {
+  .profiles {
+    column-gap: 3rem;
+  }
 }
 
 @media screen and (max-width: 880px) {
