@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 
 import { signUpNewUser, signInUser } from '@/lib/api';
 import AuthContext from 'store/auth-context';
-import styles from '@/styles/loginForm.module.css';
+import styles from '../styles/loginForm.module.css';
 
 export default function LoginForm() {
   const emailInputRef = useRef();

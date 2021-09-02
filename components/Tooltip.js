@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from '@/styles/tooltip.module.css';
+import styles from '../styles/tooltip.module.css';
 
 export default function Tooltip({ toggle, switchToggle, logout, hideTooltip }) {
   return (

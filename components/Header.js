@@ -7,7 +7,7 @@ import AuthContext from 'store/auth-context';
 import useHttp from '@/hooks/use-http';
 import User from './User';
 import Tooltip from './Tooltip';
-import styles from '@/styles/header.module.css';
+import styles from '../styles/header.module.css';
 
 export default function Header({ toggleTheme }) {
   const authContext = useContext(AuthContext);

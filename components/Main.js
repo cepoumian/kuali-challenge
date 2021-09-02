@@ -5,7 +5,7 @@ import usePage from '@/hooks/use-pagination';
 import ProfileCard from './ProfileCard';
 import { getUsers } from '@/lib/api';
 const per_page = parseInt(process.env.NEXT_PUBLIC_PER_PAGE);
-import styles from '@/styles/main.module.css';
+import styles from '../styles/main.module.css';
 
 export default function Main({ initialUsers, searchUser, error, initialError, theme }) {
   const [users, setUsers] = useState([]);

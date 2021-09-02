@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import styles from '@/styles/profile.module.css';
+import styles from '../styles/profile.module.css';
 
 export default function Profile({ user }) {
   const {
