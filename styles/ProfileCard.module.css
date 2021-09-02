@@ -15,11 +15,11 @@
 .avatar {
   width: 10rem;
   border-radius: 15%;
-  margin-bottom: 2rem;
 }
 
 .button {
   padding: 1rem 2rem;
+  margin-top: 2rem;
   font-size: 1.6rem;
   text-align: center;
   background-color: var(--clr-1-azul-marino);

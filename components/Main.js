@@ -83,11 +83,11 @@ export default function Main({ initialUsers, searchUser, error, initialError, th
         </div>
         <div className={styles.pages}>
           <button type="button" onClick={prevUsersHandler} disabled={page === 1}>
-            Anterior
+            &lt; Anterior
           </button>
           {status === 'pending' ? <p>Cargando....</p> : <p>Página {page}</p>}
           <button type="button" onClick={nextUsersHandler} disabled={page === 4}>
-            Siguiente
+            Siguiente &gt;
           </button>
         </div>
         {(initialError || requestError) && (
