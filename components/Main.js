@@ -3,22 +3,39 @@ import { useState, useEffect } from 'react';
 import useHttp from '@/hooks/use-http';
 import usePage from '@/hooks/use-pagination';
 import ProfileCard from './ProfileCard';
-import { getUsers } from '@/lib/api';
 const per_page = parseInt(process.env.NEXT_PUBLIC_PER_PAGE);
 import styles from '../styles/main.module.css';
 
-export default function Main({ initialUsers, searchUser, error, initialError, theme }) {
+export default function Main({
+  initialUsers,
+  searchUser,
+  error,
+  initialError,
+  theme,
+  loading,
+}) {
   const [users, setUsers] = useState([]);
+  const [currentUsers, setCurrentUsers] = useState([]);
   const [input, setInput] = useState('');
   const [inputError, setInputError] = useState('');
   const [searchError, setSearchError] = useState('');
-  const { sendRequest, status, data, error: requestError } = useHttp(getUsers);
   const [next, setNext] = useState(0);
   const { getPage, page } = usePage(per_page);
 
   useEffect(() => {
     setUsers(initialUsers);
   }, [initialUsers, setUsers]);
+
+  useEffect(() => {
+    if (users && users.length > 0) {
+      const usersChunk = users.slice(next, next + per_page);
+      setCurrentUsers(usersChunk);
+    }
+  }, [users, next, setCurrentUsers]);
+
+  useEffect(() => {
+    getPage(next);
+  }, [next, getPage]);
 
   useEffect(() => {
     setSearchError(error);
@@ -28,22 +45,8 @@ export default function Main({ initialUsers, searchUser, error, initialError, th
     return () => clearTimeout(timeout);
   }, [error]);
 
-  useEffect(() => {
-    sendRequest(next);
-  }, [next, sendRequest]);
-
-  useEffect(() => {
-    if (status === 'completed' && data) {
-      setUsers(data);
-    }
-  }, [status, data]);
-
-  useEffect(() => {
-    getPage(next);
-  }, [next, getPage]);
-
   const nextUsersHandler = () => {
-    if (next < 30) {
+    if (next <= per_page * 4) {
       setNext((prevState) => prevState + per_page);
     }
   };
@@ -85,16 +88,14 @@ export default function Main({ initialUsers, searchUser, error, initialError, th
           <button type="button" onClick={prevUsersHandler} disabled={page === 1}>
             &lt; Anterior
           </button>
-          {status === 'pending' ? <p>Cargando....</p> : <p>Página {page}</p>}
+          {loading ? <p>Cargando....</p> : <p>Página {page}</p>}
           <button type="button" onClick={nextUsersHandler} disabled={page === 4}>
             Siguiente &gt;
           </button>
         </div>
-        {(initialError || requestError) && (
-          <p>Se ha producido un errror: {initialError}</p>
-        )}
+        {initialError && <p>Se ha producido un errror: {initialError}</p>}
         <div className={styles.profiles}>
-          {users?.map((user) => (
+          {currentUsers?.map((user) => (
             <ProfileCard key={user.id} user={user} />
           ))}
         </div>

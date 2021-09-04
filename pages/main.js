@@ -56,7 +56,7 @@ export async function getServerSideProps() {
   let error = null;
 
   try {
-    users = await getUsers(0);
+    users = await getUsers();
   } catch (requestError) {
     error = JSON.stringify(requestError.message);
   }

@@ -18,6 +18,9 @@ export default function usePage(perPage) {
         case perPage * 3:
           setPage(4);
           break;
+        case perPage * 4:
+          setPage(5);
+          break;
         default:
           setPage(1);
       }
